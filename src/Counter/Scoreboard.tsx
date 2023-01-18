@@ -1,4 +1,5 @@
-import React, {ChangeEvent, useState} from "react";
+import React from "react";
+import s from './Counter.module.css'
 
 type ScoreboardPropsType = {
     count: number
@@ -6,7 +7,7 @@ type ScoreboardPropsType = {
 }
 
 export const Scoreboard = (props: ScoreboardPropsType) =>  {
-    const countClass = props.count ===props.maxValue ? 'borderCount' + ' ' + 'count'  : 'count'
+    const countClass = props.count ===props.maxValue ? s.borderCount + ' ' + s.count  : s.count
     return (
         <div className={countClass}>{props.count}</div>
     )

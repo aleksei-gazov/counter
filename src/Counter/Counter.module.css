@@ -1,0 +1,55 @@
+.counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: #f1c50e solid 4px;
+    width: 30vw;
+    height: 20vw;
+    margin: 100px auto;
+    background-color: #333333;
+    border-radius: 5px;
+}
+
+.count {
+    margin: 5px auto;
+    width: 28vw;
+    height: 10vw;
+    color:  #f1c50e;
+    border-radius: 5px;
+    border: #f1c50e solid 4px;
+    background-color: #333333;
+    text-align: center;
+    font-size: 45px;
+    padding-top: 10px;
+}
+
+.borderCount {
+    /*background-color: #f1c50e;*/
+    color: darkred;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.errorMessage {
+    margin: 5px auto;
+    width: 28vw;
+    height: 10vw;
+    color: #f1c50e;
+    border-radius: 5px;
+    background-color:darkred ;
+    text-align: center;
+    font-size: 45px;
+    padding-top: 20px;
+}
+.Message {
+    margin: 5px auto;
+    width: 28vw;
+    height: 10vw;
+    color: #f1c50e;
+    border: #f1c50e solid 4px;
+    border-radius: 5px;
+    background-color: #333333;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 20px;
+}

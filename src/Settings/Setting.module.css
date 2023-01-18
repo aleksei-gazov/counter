@@ -1,0 +1,36 @@
+.settrings {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: #f1c50e solid 4px;
+    border-radius: 5px;
+    width: 30vw;
+    height: 20vw;
+    margin: 100px auto;
+    background-color: #333333;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    border:  #f1c50e solid 4px;
+    border-radius: 5px;
+    background-color:  #333333;
+    width: 28vw;
+    height: 10vw;
+}
+
+.textInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 28vw;
+}
+
+.text {
+    font-size: 30px;
+   color: #f1c50e;
+}
