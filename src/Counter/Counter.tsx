@@ -2,10 +2,11 @@ import React from 'react';
 import {Scoreboard} from './Scoreboard';
 import {Button} from '../Button';
 import s from './Counter.module.css'
- import { useSelector,  useDispatch } from 'react-redux';
+ import { useDispatch } from 'react-redux';
 import { AppStoreType } from '../store/Stotre';
 import { InitialStateType } from '../types/CountTypes';
 import { useSelector } from 'react-redux';
+import {CounterIncreaseAC} from '../store/action-creator/countIncreaseAC';
 
 type CounterPropsType = {
     count: number
@@ -22,22 +23,27 @@ type CounterPropsType = {
 
 export const Counter: React.FC<CounterPropsType> = ({
                                                         count,
-                                                        countPlus,
+                                                        // countPlus,
                                                         countClassAdd,
                                                         disabledButtonAdd,
                                                         countReset,
                                                         countClassReset,
                                                         disabledButtonReset,
-                                                        maxValue,
+                                                        // maxValue,
                                                         errorMessage,
                                                         messageSet,
                                                     }) => {
 
-//    const minValue = useSelector<AppStoreType, InitialStateType>((state)=> state.reducerCounter)    
-    //  const steps = useSelector<AppStoreType, InitialStateType>();                                                
-    //              console.log(minValue)
-// let a = useSelector<AppStoreType, InitialStateType>((state: InitialStateType)=> state)
-    // const dispatch = useDispatch();
+   const value = useSelector<AppStoreType, number>((state)=> state.reducerCounter.value)
+   const maxValue = useSelector<AppStoreType, number>((state)=> state.reducerCounter.maxValue)
+                   console.log(value)
+    const dispatch = useDispatch();
+    const countPlus = () => {
+        if ( value < maxValue && value >= 0 && value !== maxValue) {
+            dispatch(CounterIncreaseAC())
+        }
+    }
+
     return (
         <div className={s.counter}>
             {errorMessage
@@ -48,7 +54,7 @@ export const Counter: React.FC<CounterPropsType> = ({
                     ?
                     <div className={s.Message}>enter values and press 'SET'</div>
                     :
-                    <Scoreboard count={count} maxValue={maxValue}/>
+                    <Scoreboard count={value} maxValue={maxValue}/>
             }
             <div className={'ButtonContainer'}>
                 <Button name={'add'} callBack={countPlus}

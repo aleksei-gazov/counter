@@ -1,8 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Button} from './Button';
-import {Scoreboard} from './Counter/Scoreboard';
 import {Counter} from './Counter/Counter';
 import {Setings} from './Settings/Settings';
 import { useSelector } from 'react-redux';
@@ -60,7 +57,6 @@ const onBlur = ()=> {
     const disabledButtonAdd = count === maxValue || minValue >= maxValue || minValue < 0
     const disabledButtonReset = count === minValue|| minValue >= maxValue || minValue < 0
     const errorMessage = minValue < 0 || minValue >= maxValue
-
 
     // SetButton disabled
     const countClassSet = minValue >= maxValue || minValue < 0 ? 'button' + ' ' + 'disabled' : 'button'

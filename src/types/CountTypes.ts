@@ -6,7 +6,7 @@ MAX_VALUE_COUNTER = 'MAX_VALUE_COUNTER'
 }
 
 export type InitialStateType = {
-  minValue: number
+ value: number
   maxValue: number
 }
 
