@@ -5,10 +5,12 @@ import {Button} from './Button';
 import {Scoreboard} from './Counter/Scoreboard';
 import {Counter} from './Counter/Counter';
 import {Setings} from './Settings/Settings';
+import { useSelector } from 'react-redux';
 
 export type InputValueType = number
 
 function App() {
+   
 
     const [minValue, setMinValue] = useState<InputValueType>(0)
     const [maxValue, setMaxValue] = useState<InputValueType>(0)

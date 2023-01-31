@@ -2,6 +2,10 @@ import React from 'react';
 import {Scoreboard} from './Scoreboard';
 import {Button} from '../Button';
 import s from './Counter.module.css'
+ import { useSelector,  useDispatch } from 'react-redux';
+import { AppStoreType } from '../store/Stotre';
+import { InitialStateType } from '../types/CountTypes';
+import { useSelector } from 'react-redux';
 
 type CounterPropsType = {
     count: number
@@ -29,6 +33,11 @@ export const Counter: React.FC<CounterPropsType> = ({
                                                         messageSet,
                                                     }) => {
 
+//    const minValue = useSelector<AppStoreType, InitialStateType>((state)=> state.reducerCounter)    
+    //  const steps = useSelector<AppStoreType, InitialStateType>();                                                
+    //              console.log(minValue)
+// let a = useSelector<AppStoreType, InitialStateType>((state: InitialStateType)=> state)
+    // const dispatch = useDispatch();
     return (
         <div className={s.counter}>
             {errorMessage
