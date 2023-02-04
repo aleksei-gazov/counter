@@ -5,9 +5,18 @@ export const CounterIncreaseAC = ()=> {
     type: CountActionTypes.COUNT_INCREASE
   }
 }
-export const CounterMaxValueAC = (value: number)=> {
+export const CountSetValueWidthInputAC = (minValue: number,  maxValue: number)=> {
   return {
-    type: CountActionTypes.MAX_VALUE_COUNTER,
-    value
+    type: CountActionTypes.COUNT_SET_VALUES_WIDTH_INPUTS,
+    payload: {
+      minValue,
+      maxValue
+    }
+  }
+}
+
+export const CounterResetValueAC = () => {
+  return {
+    type: CountActionTypes.COUNT_RESET_VALUE
   }
 }

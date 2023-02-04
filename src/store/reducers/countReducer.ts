@@ -2,16 +2,19 @@ import {CountActionTypes, CounterActionType, InitialStateType} from '../../types
 
 
 const initialState: InitialStateType = {
-    value: 0,
-    maxValue: 1
+    count: 0,
+    minValue: 0,
+    maxValue: 2
 }
 
 export const reducerCounter = (state: InitialStateType = initialState, action: CounterActionType): InitialStateType => {
     switch (action.type) {
         case CountActionTypes.COUNT_INCREASE:
-            return {...state, value: state.value + 1}
-        case CountActionTypes.MAX_VALUE_COUNTER:
-            return {...state, value: action.value}
+            return {...state, count: state.count + 1}
+        case CountActionTypes.COUNT_SET_VALUES_WIDTH_INPUTS:
+            return {...state, count: action.payload.minValue, maxValue: action.payload.maxValue, minValue: action.payload.minValue}
+        case CountActionTypes.COUNT_RESET_VALUE:
+            return {...state, count: state.minValue}
         default:
             return state
     }

@@ -2,47 +2,45 @@ import React from 'react';
 import {Scoreboard} from './Scoreboard';
 import {Button} from '../Button';
 import s from './Counter.module.css'
- import { useDispatch } from 'react-redux';
-import { AppStoreType } from '../store/Stotre';
-import { InitialStateType } from '../types/CountTypes';
-import { useSelector } from 'react-redux';
-import {CounterIncreaseAC} from '../store/action-creator/countIncreaseAC';
+import {useDispatch} from 'react-redux';
+import {AppStoreType} from '../store/Stotre';
+import {useSelector} from 'react-redux';
+import {CounterIncreaseAC, CounterResetValueAC} from '../store/action-creator/countIncreaseAC';
 
 type CounterPropsType = {
-    count: number
-    countPlus: () => void
-    countClassAdd: string
-    disabledButtonAdd: boolean
-    countReset: () => void
-    countClassReset: string
-    disabledButtonReset: boolean
-    maxValue: number
-    errorMessage: boolean
-    messageSet?: boolean
+
 }
 
-export const Counter: React.FC<CounterPropsType> = ({
-                                                        count,
-                                                        // countPlus,
-                                                        countClassAdd,
-                                                        disabledButtonAdd,
-                                                        countReset,
-                                                        countClassReset,
-                                                        disabledButtonReset,
-                                                        // maxValue,
-                                                        errorMessage,
-                                                        messageSet,
-                                                    }) => {
+export const Counter: React.FC<CounterPropsType> = () => {
 
-   const value = useSelector<AppStoreType, number>((state)=> state.reducerCounter.value)
-   const maxValue = useSelector<AppStoreType, number>((state)=> state.reducerCounter.maxValue)
-                   console.log(value)
+    const count = useSelector<AppStoreType, number>((state) => state.reducerCounter.count)
+    const maxValue = useSelector<AppStoreType, number>((state) => state.reducerCounter.maxValue)
+    const minValue = useSelector<AppStoreType, number>((state) => state.reducerCounter.minValue)
+    const messageSet = useSelector<AppStoreType, boolean>((state)=> state.reducerSetting.focus )
+    const maxValueInput = useSelector<AppStoreType, number>(state => state.reducerSetting.valueInputMax)
+    const minValueInput = useSelector<AppStoreType, number>(state => state.reducerSetting.valueInputStart)
+    console.log(count)
     const dispatch = useDispatch();
     const countPlus = () => {
-        if ( value < maxValue && value >= 0 && value !== maxValue) {
+        if (count < maxValue && count >= 0 && count !== maxValue) {
             dispatch(CounterIncreaseAC())
         }
     }
+    const countReset = () => {
+        dispatch(CounterResetValueAC())
+    }
+//Button Reset
+    const countClassReset = count === minValue || minValue >= maxValue || minValue < 0 ? 'button' + ' ' + 'disabled' : 'button'
+    const disabledButtonReset = count === minValue || minValue >= maxValue || minValue < 0
+
+//Button Add
+    const countClassAdd = count === maxValue || minValue >= maxValue || minValue < 0 ? 'button' + ' ' + 'disabled' : 'button'
+    const disabledButtonAdd = count === maxValue || minValue >= maxValue || minValue < 0
+
+    //Error Message
+    const errorMessage = minValueInput < 0 || minValueInput >= maxValueInput
+
+
 
     return (
         <div className={s.counter}>
@@ -54,7 +52,7 @@ export const Counter: React.FC<CounterPropsType> = ({
                     ?
                     <div className={s.Message}>enter values and press 'SET'</div>
                     :
-                    <Scoreboard count={value} maxValue={maxValue}/>
+                    <Scoreboard count={count} maxValue={maxValue}/>
             }
             <div className={'ButtonContainer'}>
                 <Button name={'add'} callBack={countPlus}
