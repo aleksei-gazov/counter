@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from './Counter/Counter';
 import {Setings} from './Settings/Settings';
-import {useSelector} from 'react-redux';
+
 
 export type InputValueType = number
 

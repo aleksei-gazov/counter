@@ -4,7 +4,7 @@ import {InitialStateSettingType, SettingActionType, SettingActionTypes} from '..
 const initialState: InitialStateSettingType = {
     focus: false,
     valueInputStart: 0,
-    valueInputMax: 0,
+    valueInputMax: 1,
 }
 
 export const reducerSetting = (state: InitialStateSettingType = initialState, action: SettingActionType): InitialStateSettingType => {

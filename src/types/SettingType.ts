@@ -1,3 +1,10 @@
+import {
+    ChangeInputMaxACType,
+    ChangeInputStarACType,
+    OffFocusACType,
+    OnFocusACType,
+
+} from '../store/action-creator/settingFocusAC';
 
 export enum SettingActionTypes {
     ON_FOCUS = 'ON_FOCUS',
@@ -31,7 +38,7 @@ type ChangeInputMaxType = {
     }
 }
 
-export type SettingActionType = OnFocusType
-    | OffFocusType
-    | ChangeInputStarType
-    | ChangeInputMaxType
+export type SettingActionType = OnFocusACType
+    | OffFocusACType
+    | ChangeInputStarACType
+    | ChangeInputMaxACType

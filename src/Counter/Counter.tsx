@@ -19,7 +19,7 @@ export const Counter: React.FC<CounterPropsType> = () => {
     const messageSet = useSelector<AppStoreType, boolean>((state)=> state.reducerSetting.focus )
     const maxValueInput = useSelector<AppStoreType, number>(state => state.reducerSetting.valueInputMax)
     const minValueInput = useSelector<AppStoreType, number>(state => state.reducerSetting.valueInputStart)
-    console.log(count)
+
     const dispatch = useDispatch();
     const countPlus = () => {
         if (count < maxValue && count >= 0 && count !== maxValue) {

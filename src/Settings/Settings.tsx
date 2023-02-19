@@ -1,43 +1,46 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button} from '../Button';
 import {Input} from './Input';
 import {InputValueType} from '../App';
 import s from './Setting.module.css'
 import {useDispatch, useSelector} from 'react-redux';
-import {ChangeInputMaxAC, ChangeInputStarAC, OffFocusAC, OnFocusAC} from '../store/action-creator/settingFocusAC';
-import {AppStoreType} from '../store/Stotre';
+import {
+    ChangeInputMaxAC,
+    ChangeInputStarAC,
+    OffFocusAC,
+    OnFocusAC,
+    thunc
+} from '../store/action-creator/settingFocusAC';
+import {  AppStoreType} from '../store/Stotre';
 import {CountSetValueWidthInputAC} from '../store/action-creator/countIncreaseAC';
 
 
 type CounterPropsType = {
-    // minValue: InputValueType
-    // maxValue: InputValueType
-    // setMinValue: (valueMin: number) => void
-    // setMaxValue: (valueMax: number) => void
-    // setLocalstorage: () => void
-    // countClassReset: string
-    // disabledButtonReset: boolean
-    // inputError: string
-
 
 }
+// export const AppDispatch = ()=> useDispatch<AppDispatchType>()
 
-export const Setings: React.FC<CounterPropsType> = ({
-                                                        // minValue,
-                                                        // maxValue,
-                                                        // setMinValue,
-                                                        // setMaxValue,
-                                                        // setLocalstorage,
-                                                        // countClassReset,
-                                                        // disabledButtonReset,
-                                                        // inputError,
+export const Setings: React.FC<CounterPropsType> = () => {
 
-                                                    }) => {
 
-    const dispatch = useDispatch();
+
+
+
     const maxValue = useSelector<AppStoreType, number>(state => state.reducerSetting.valueInputMax)
     const minValue = useSelector<AppStoreType, number>(state => state.reducerSetting.valueInputStart)
+    const dispatch = useDispatch<any>()
 
+    useEffect(()=> {
+        let valueAsStringMin = localStorage.getItem('counterValueMin')
+        let valueAsStringMax = localStorage.getItem('counterValueMax')
+        if (valueAsStringMin && valueAsStringMax) {
+            let newValueMin = JSON.parse(valueAsStringMin)
+            let newValueMax = JSON.parse(valueAsStringMax)
+            dispatch(CountSetValueWidthInputAC(newValueMin, newValueMax))
+            dispatch(ChangeInputStarAC(newValueMin))
+            dispatch(ChangeInputMaxAC( newValueMax))
+        }
+    }, [])
 
     const onFocus = () => {
         dispatch(OnFocusAC())
@@ -53,7 +56,9 @@ export const Setings: React.FC<CounterPropsType> = ({
     }
 
     const setLocalstorage = () => {
-        dispatch(CountSetValueWidthInputAC(minValue, maxValue))
+
+
+        dispatch(thunc(minValue, maxValue))
     }
 
     const inputError = minValue >= maxValue || minValue < 0 ? 'inputError' : 'inputClass'

@@ -4,7 +4,7 @@ import {CountActionTypes, CounterActionType, InitialStateType} from '../../types
 const initialState: InitialStateType = {
     count: 0,
     minValue: 0,
-    maxValue: 2
+    maxValue: 1,
 }
 
 export const reducerCounter = (state: InitialStateType = initialState, action: CounterActionType): InitialStateType => {

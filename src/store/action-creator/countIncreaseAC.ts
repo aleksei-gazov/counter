@@ -5,6 +5,9 @@ export const CounterIncreaseAC = ()=> {
     type: CountActionTypes.COUNT_INCREASE
   }
 }
+
+export type CountSetValueWidthInputACType = ReturnType<typeof CountSetValueWidthInputAC>
+
 export const CountSetValueWidthInputAC = (minValue: number,  maxValue: number)=> {
   return {
     type: CountActionTypes.COUNT_SET_VALUES_WIDTH_INPUTS,
@@ -12,7 +15,7 @@ export const CountSetValueWidthInputAC = (minValue: number,  maxValue: number)=>
       minValue,
       maxValue
     }
-  }
+  } as const
 }
 
 export const CounterResetValueAC = () => {

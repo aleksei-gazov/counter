@@ -1,3 +1,5 @@
+import {CountSetValueWidthInputACType} from '../store/action-creator/countIncreaseAC';
+
 export enum CountActionTypes {
     COUNT_INCREASE = 'COUNT_INCREASE',
     MAX_VALUE_COUNTER = 'MAX_VALUE_COUNTER',
@@ -28,6 +30,5 @@ type CountSetValueWidthInputType = {
 }
 
 export type CounterActionType = CounterIncreaseACType
-    | CountSetValueWidthInputType
+    | CountSetValueWidthInputACType
     | CounterResetValueACType
-    | CountSetValueWidthInputType
